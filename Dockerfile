@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM openjdk:11 as prod
+FROM maven:3.9.6-eclipse-temurin-21 as prod
 WORKDIR /app
 RUN echo App is ready
 ENV SPRING_PROFILES_ACTIVE=prod

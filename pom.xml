@@ -21,7 +21,7 @@
 	<properties>
 		<java.version>11</java.version>
 		<maven.compiler.source>11</maven.compiler.source>
-		<maven.compiler.target>11</maven.compiler.target>
+		<maven.compiler.target>21</maven.compiler.target>
 		<lombok.version>1.18.30</lombok.version>
 		<redis.client.version>5.0.2</redis.client.version>
 		<h2.version>2.2.224</h2.version>
@@ -31,7 +31,7 @@
 	<modules>
 		<module>api</module>
 		<module>service</module>
-<!--		<module>integration</module>-->
+		<module>integration</module>
 		<module>data</module>
 		<module>spring-app</module>
 		<module>ui</module>

@@ -14,7 +14,7 @@
     <properties>
         <log4jdbc.version>2.0.0</log4jdbc.version>
         <redisson.version>3.18.0</redisson.version>
-        <hibernate.enhance.version>6.1.7.Final</hibernate.enhance.version>>
+        <hibernate.enhance.version>6.1.7.Final</hibernate.enhance.version>
     </properties>
 
     <dependencies>

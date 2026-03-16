@@ -1,5 +1,6 @@
 package com.zhurawell.base.data.model.dashboard;
 
+import com.zhurawell.base.data.model.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -16,7 +17,7 @@ import java.math.BigInteger;
 @SequenceGenerator(name = "dashboard_generator", schema = "public", sequenceName = "dashboard_sequence",
         initialValue = 5,
         allocationSize = 20)
-public class Dashboard {
+public class Dashboard extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "dashboard_generator")
@@ -25,25 +26,17 @@ public class Dashboard {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "display_name")
+    private String displayName;
+
+    @Column(name = "description")
+    private String description;
+
     @Column(name = "type_id")
-    private int type;
+    private int typeId;
 
     @JoinColumn(name = "parent_id")
     @ManyToOne(fetch = FetchType.LAZY)
     private Dashboard parent;
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        Dashboard user = (Dashboard) o;
-
-        return id != null && id.equals(user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Dashboard.class.hashCode();
-    }
 
 }

@@ -1,5 +1,6 @@
 package com.zhurawell.base.data.model.user;
 
+import com.zhurawell.base.data.model.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -17,7 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @SequenceGenerator(name = "role_generator", sequenceName = "role_seq", allocationSize = 10, schema = "public")
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE, region = "entity.role")
-public class Role {
+public class Role extends BaseEntity {
 
     public Role(BigInteger id) {
         this.id = id;

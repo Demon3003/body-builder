@@ -1,7 +1,7 @@
 package com.zhurawell.base.service.user;
 
-import com.zhurawell.base.data.model.user.RoleLightView;
 import com.zhurawell.base.data.model.user.Role;
+import com.zhurawell.base.data.model.user.view.RoleLightView;
 
 import java.math.BigInteger;
 

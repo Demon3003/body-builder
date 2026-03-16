@@ -1,4 +1,4 @@
-package com.zhurawell.base.data.user;
+package com.zhurawell.base.data.converter.user;
 
 import com.zhurawell.base.data.model.user.Status;
 

@@ -1,5 +1,6 @@
 package com.zhurawell.base.data.model.post;
 
+import com.zhurawell.base.data.model.BaseEntity;
 import com.zhurawell.base.data.model.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -30,7 +31,7 @@ import java.util.Set;
                 @ColumnResult(name = "text"),
                 @ColumnResult(name = "title")
             }))
-public class Post {
+public class Post extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "post_seq")

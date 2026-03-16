@@ -1,5 +1,6 @@
 package com.zhurawell.base.data.model.post;
 
+import com.zhurawell.base.data.model.BaseEntity;
 import com.zhurawell.base.data.model.user.User;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +20,7 @@ import java.math.BigInteger;
         @NamedEntityGraph(name = "PostComment.post.postDetails", attributeNodes = @NamedAttributeNode(value = "post", subgraph = "post.postDetails"),
         subgraphs = {@NamedSubgraph(name = "post.postDetails", attributeNodes = @NamedAttributeNode("postDetails"))})
 })
-public class PostComment {
+public class PostComment extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "post_comment_seq")

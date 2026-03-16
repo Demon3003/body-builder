@@ -1,5 +1,6 @@
 package com.zhurawell.base.data.model.user;
 
+import com.zhurawell.base.data.model.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -15,7 +16,7 @@ import java.math.BigInteger;
 @NoArgsConstructor
 @SequenceGenerator(name = "permission_generator", sequenceName = "permission_seq", schema = "public", allocationSize = 10)
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE, region = "entity.permission")
-public class Permission implements GrantedAuthority {
+public class Permission extends BaseEntity implements GrantedAuthority {
 
     @Id
     @GeneratedValue(generator = "permission_generator")
@@ -34,24 +35,6 @@ public class Permission implements GrantedAuthority {
     @Override
     public String getAuthority() {
         return permissionName;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-
-        if (!(o instanceof Permission))
-            return false;
-
-        Permission other = (Permission) o;
-
-        return id != null &&
-                id.equals(other.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return getClass().hashCode();
     }
 
     @Override

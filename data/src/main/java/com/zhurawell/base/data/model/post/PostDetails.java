@@ -1,5 +1,6 @@
 package com.zhurawell.base.data.model.post;
 
+import com.zhurawell.base.data.model.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -14,7 +15,7 @@ import java.util.Date;
 @Getter
 @Setter
 @SequenceGenerator(name = "post_det_seq", sequenceName = "post_det_sequence", allocationSize = 20, schema = "public")
-public class PostDetails {
+public class PostDetails extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "post_det_seq")

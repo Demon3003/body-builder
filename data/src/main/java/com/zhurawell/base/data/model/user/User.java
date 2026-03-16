@@ -1,6 +1,7 @@
 package com.zhurawell.base.data.model.user;
 
-import com.zhurawell.base.data.user.UserStatusConverter;
+import com.zhurawell.base.data.converter.user.UserStatusConverter;
+import com.zhurawell.base.data.model.BaseEntity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -25,7 +26,7 @@ import java.util.Date;
     @NamedAttributeNode(value = "role", subgraph = "sub-role-permission"),
     subgraphs = @NamedSubgraph(name = "sub-role-permission", attributeNodes = @NamedAttributeNode(value = "permissions")))
 @org.hibernate.annotations.Cache(usage = CacheConcurrencyStrategy.READ_WRITE, region = "entity.user")
-public class User {
+public class User extends BaseEntity {
 
     @Id
     @GeneratedValue(generator = "user_generator")
@@ -87,19 +88,5 @@ public class User {
                 ", registrationDate=" + registrationDate +
                 ", status=" + status +
                 '}';
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || Hibernate.getClass(this) != Hibernate.getClass(o)) return false;
-        User user = (User) o;
-
-        return id != null && id.equals(user.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return User.class.hashCode();
     }
 }

@@ -1,7 +1,7 @@
 package com.zhurawell.base.data.repo.user;
 
 import com.zhurawell.base.data.model.user.Role;
-import com.zhurawell.base.data.model.user.RoleLightView;
+import com.zhurawell.base.data.model.user.view.RoleLightView;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;

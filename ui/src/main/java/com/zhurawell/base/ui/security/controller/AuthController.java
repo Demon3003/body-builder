@@ -38,6 +38,7 @@ public class AuthController {
         Pair<String, String> tokens = jwtTokenProvider.createAccessAndRefreshTokens(loginModel.getLogin());
         Cookie cookie = new Cookie(authorizationHeader, tokens.getFirst());
         cookie.setMaxAge(Integer.MAX_VALUE); //seconds
+        cookie.setHttpOnly(true);
         response.addCookie(cookie);
         return "redirect:/home";
     }

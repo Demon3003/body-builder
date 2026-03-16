@@ -1,8 +1,8 @@
 package com.zhurawell.base.data.repo.user;
 
-import com.zhurawell.base.data.model.user.DateAndImage;
+import com.zhurawell.base.data.model.user.view.DateAndImage;
 import com.zhurawell.base.data.model.user.User;
-import com.zhurawell.base.data.model.user.UserLightView;
+import com.zhurawell.base.data.model.user.view.UserLightView;
 import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
@@ -59,7 +59,7 @@ public interface UserRepository extends JpaRepository<User, BigInteger>, UserExt
     @Query("select u.registrationDate from User u where u.id = ?1")
     Date findUserRegistrationDate(BigInteger userId);
 
-    @Query("select new com.zhurawell.base.data.model.user.DateAndImage(u.registrationDate, u.image) from User u where u.id = ?1")
+    @Query("select new com.zhurawell.base.data.model.user.view.DateAndImage(u.registrationDate, u.image) from User u where u.id = ?1")
     DateAndImage findUserRegistrationDateAndImage(BigInteger userId);
 
     @Query("update User u set u.image = :img where u.id = :userId")

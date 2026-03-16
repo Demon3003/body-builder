@@ -1,4 +1,4 @@
-package com.zhurawell.base.data.model.user;
+package com.zhurawell.base.data.model.user.view;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -10,8 +10,8 @@ services:
     volumes:
       - logs_app_v:/app/logs
     ports:
-      - "8080:8080"
-      - "8000:8000"
+      - "8090:8090"
+      - "8000:9000"
     networks:
       - builder_app_net
     environment:

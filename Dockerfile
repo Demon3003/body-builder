@@ -1,10 +1,13 @@
 # syntax=docker/dockerfile:1
-
-FROM maven:3.9.6-eclipse-temurin-21 as prod
+FROM maven:3.9.6-eclipse-temurin-21 as build
 WORKDIR /app
-RUN echo App is ready
+COPY . .
+RUN --mount=type=cache,target=/root/.m2 mvn clean install -Dmaven.test.skip
+
+FROM build as prod
+WORKDIR /app
 ENV SPRING_PROFILES_ACTIVE=prod
-COPY /spring-app/target/body-builder.jar .
+COPY --from=build /app/spring-app/target/body-builder.jar .
 CMD ["java", "-jar", "body-builder.jar"]
 
 

@@ -1,7 +1,6 @@
 package com.zhurawell.base.integration.kafka.service.user.impl;
 
 import com.zhurawell.base.data.model.user.User;
-import com.zhurawell.base.integration.kafka.constants.Topics;
 import com.zhurawell.base.integration.kafka.model.CreateUserMessage;
 import com.zhurawell.base.integration.kafka.service.user.UserBrokerIntService;
 import lombok.extern.slf4j.Slf4j;
@@ -26,7 +25,7 @@ public class UserKafkaIntServiceImpl implements UserBrokerIntService {
             m.setEmail(u.getEmail());
             m.setLogin(u.getLogin());
             m.setRegistrationDate(u.getRegistrationDate());
-            kt.send(Topics.USER_CRUD_TOPIC, m);
+            kt.send("users", m);
         } catch (Exception ex) {
             log.error("Unsuccessful message to create user with id {}, error: {}", u.getId(), ex);
         }

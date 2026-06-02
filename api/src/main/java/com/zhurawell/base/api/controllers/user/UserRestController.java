@@ -4,6 +4,8 @@ import com.zhurawell.base.api.converters.UserRestConverter;
 import com.zhurawell.base.api.dto.user.UserDto;
 import com.zhurawell.base.api.dto.user.UserDtoLight;
 import com.zhurawell.base.api.mappers.user.UserMapper;
+import com.zhurawell.base.data.model.user.User;
+import com.zhurawell.base.integration.kafka.service.user.impl.UserKafkaIntServiceImpl;
 import com.zhurawell.base.service.user.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +24,6 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequestMapping("/api/user")
-@PreAuthorize("hasAuthority('user:manager') or hasAuthority('sysadm')")
 public class UserRestController {
 
     @Autowired
@@ -30,6 +31,9 @@ public class UserRestController {
 
     @Autowired
     private UserMapper userMapper;
+
+    @Autowired
+    private UserKafkaIntServiceImpl userKafkaIntServicel;
 
     @PostMapping("/create")
     public ResponseEntity<UserDto> createUser(@RequestBody UserDto user) {
@@ -72,4 +76,19 @@ public class UserRestController {
         return ResponseEntity.ok(userMapper.entityListToDtoListLight(
                 userService.findByRegistrationDateAfter(new Date(activeFrom))));
     }
+
+
+    @GetMapping("/test")
+    public ResponseEntity<UserDtoLight> test() {
+        var user = new User();
+        user.setFirstName("test");
+        user.setLastName("test");
+        user.setLogin("test");
+        user.setPassword("test");
+        user.setRegistrationDate(new Date());
+        user.setId(BigInteger.valueOf(1));
+        userKafkaIntServicel.createUser(user);
+        return ResponseEntity.ok().build();
+    }
+
 }
